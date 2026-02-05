@@ -8,18 +8,14 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Babel voor in-browser JSX/TSX transformatie (ideaal voor simpele GitHub hosting) -->
+    <!-- Babel voor in-browser transformatie -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-        }
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         
-        /* Loading spinner styling */
         #loader {
             display: flex;
             justify-content: center;
@@ -41,11 +37,12 @@
     <script type="importmap">
 {
   "imports": {
-    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
-    "react": "https://esm.sh/react@^19.2.4",
-    "react-dom": "https://esm.sh/react-dom@^19.2.4",
+    "react": "https://esm.sh/react@19.0.0",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+    "lucide-react": "https://esm.sh/lucide-react@0.460.0",
+    "@google/genai": "https://esm.sh/@google/genai@1.40.0",
     "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "@google/genai": "https://esm.sh/@google/genai@^1.40.0",
     "react/": "https://esm.sh/react@^19.2.4/"
   }
 }
@@ -53,16 +50,15 @@
 </head>
 <body class="bg-gray-50 text-gray-900">
     <div id="root">
-        <!-- Initial loading state -->
         <div id="loader">
             <div class="flex flex-col items-center gap-4">
                 <div class="spinner"></div>
-                <p class="text-indigo-600 font-medium animate-pulse">NovaShop laden...</p>
+                <p class="text-indigo-600 font-medium">NovaShop voorbereiden...</p>
             </div>
         </div>
     </div>
 
-    <!-- Belangrijk: type="text/babel" en data-type="module" voor directe uitvoering -->
+    <!-- We gebruiken nu één geconsolideerd bestand om import-fouten te voorkomen -->
     <script type="text/babel" data-type="module" src="index.tsx"></script>
 </body>
 </html>
